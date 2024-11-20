@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import { type MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,6 +14,7 @@ export default function Index() {
         <header className="flex flex-col items-center gap-9">
           <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
             Welcome to <span className="sr-only">Remix</span>
+            <p>MaxRetry {ENV.MAX_RETRY}</p>
           </h1>
           <div className="h-[144px] w-[434px]">
             <img
