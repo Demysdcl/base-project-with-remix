@@ -1,12 +1,15 @@
-import type { User } from "@prisma/client";
-import { Link, Outlet } from "@remix-run/react";
-import { format } from "date-fns";
+import type { User } from '@prisma/client'
+import { Outlet, useNavigate } from '@remix-run/react'
+import { format } from 'date-fns'
+import { Button } from '~/components'
 
 interface UsersTableProps {
-  users: User[];
+  users: User[]
 }
 
 export function UsersTable({ users }: UsersTableProps) {
+  const navigate = useNavigate()
+
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-8 ">
       <div className="sm:flex sm:items-center">
@@ -14,13 +17,9 @@ export function UsersTable({ users }: UsersTableProps) {
           <h1 className="text-xl font-semibold text-gray-900">Usuários</h1>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <Link
-            to="/users/form"
-            type="button"
-            className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-          >
+          <Button onClick={() => navigate('/users/form')}>
             Adicionar usuário
-          </Link>
+          </Button>
         </div>
       </div>
       <Outlet />
@@ -67,7 +66,7 @@ export function UsersTable({ users }: UsersTableProps) {
                         {user.email}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {format(user.birthday, "dd/MM/yyyy")}
+                        {format(user.birthday, 'dd/MM/yyyy')}
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <a
@@ -86,5 +85,5 @@ export function UsersTable({ users }: UsersTableProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }

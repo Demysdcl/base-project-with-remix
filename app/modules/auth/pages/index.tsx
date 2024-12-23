@@ -21,7 +21,7 @@ const fields: CustomFormField[] = [
 
 export function LoginForm({ schema }: LoginProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-600 flex justify-center items-center">
+    <div className="min-h-screen bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 flex justify-center items-center">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
           Login

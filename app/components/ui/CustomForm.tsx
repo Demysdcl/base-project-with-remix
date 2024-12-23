@@ -1,5 +1,6 @@
 import type { HTMLInputTypeAttribute } from 'react'
 import type { SomeZodObject } from 'zod'
+import { cn } from '~/lib'
 import { RemixForm } from '~/modules/remix-forms/form'
 import { ChildrenProp } from '~/types'
 import { Button } from './button'
@@ -50,9 +51,9 @@ export const CustomForm = ({
           </Field>
         ))}
 
-        <Errors className="text-red-500 font-bold text-sm antialiased" />
+        <Errors className="text-red-500 font-bold text-sm antialiased mb-4" />
         <div className="flex gap-4">
-          <Button className={buttonClass}>{buttonText}</Button>
+          <Button className={cn('w-full', buttonClass)}>{buttonText}</Button>
           {children}
         </div>
       </>

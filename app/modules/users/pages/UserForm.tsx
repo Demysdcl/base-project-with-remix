@@ -1,11 +1,16 @@
 import { useNavigate } from '@remix-run/react'
 import { SomeZodObject } from 'zod'
-import { CustomForm } from '~/components'
+import { Button, CustomForm } from '~/components'
 
 type UserFormProps = { schema: SomeZodObject }
 
 export function UserForm({ schema }: UserFormProps) {
   const navigate = useNavigate()
+
+  const handleBack = () => {
+    console.log('Voltar clicado')
+    navigate(-1)
+  }
 
   return (
     <div className="relative pt-10 sm:mt-0">
@@ -20,7 +25,7 @@ export function UserForm({ schema }: UserFormProps) {
             </p>
           </div>
         </div>
-        <div className="mt-5 md:col-span-2 md:mt-0">
+        <div className="mt-5 md:col-span-2 md:mt-0 ">
           <CustomForm
             schema={schema}
             buttonText="Salvar"
@@ -30,7 +35,16 @@ export function UserForm({ schema }: UserFormProps) {
               { label: 'Data de nascimento', name: 'birthday', type: 'date' },
               { label: 'Senha', name: 'password', type: 'password' },
             ]}
-          />
+          >
+            <Button
+              type="button"
+              onClick={handleBack}
+              variant="outline"
+              className="w-full"
+            >
+              Voltar
+            </Button>
+          </CustomForm>
         </div>
       </div>
     </div>
