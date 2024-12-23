@@ -1,8 +1,6 @@
-import { getUsers } from '~/modules/users/index.server'
-
 import { useLoaderData } from '@remix-run/react'
 import { ErrorFeedback } from '~/components'
-import { UsersTable } from '~/modules/users'
+import { getUsers, UsersTable } from '~/modules/users'
 import { ErrorProps } from '~/types'
 
 export async function loader() {

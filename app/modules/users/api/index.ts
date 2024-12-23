@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { MIN_PASSWORD_LENGTH } from '~/modules/constants'
-import { db } from '~/modules/db/index.server'
+import { db } from '~/modules/db'
 
 export const userSchema = z.object({
   name: z.string().min(1, 'Informe o nome').trim(),
