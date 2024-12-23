@@ -1,8 +1,9 @@
 import { ActionFunctionArgs } from '@remix-run/node'
 import { makeDomainFunction } from 'domain-functions'
 import { ErrorFeedback } from '~/components'
-import { formAction } from '~/modules/remix-forms/index.server'
-import { saveUser, UserForm, userSchema } from '~/modules/users'
+import { formAction } from '~/form-action.server'
+import { UserForm } from '~/modules/users'
+import { saveUser, userSchema } from '~/modules/users/index.server'
 import { ErrorProps } from '~/types'
 
 const mutation = makeDomainFunction(userSchema)(async (values) => {

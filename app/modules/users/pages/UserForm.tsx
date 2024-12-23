@@ -1,7 +1,6 @@
 import { useNavigate } from '@remix-run/react'
 import { SomeZodObject } from 'zod'
-import { Button, Input, InputDate } from '~/components'
-import { RemixForm } from '~/modules/remix-forms/index.server'
+import { CustomForm } from '~/components'
 
 type UserFormProps = { schema: SomeZodObject }
 
@@ -22,66 +21,16 @@ export function UserForm({ schema }: UserFormProps) {
           </div>
         </div>
         <div className="mt-5 md:col-span-2 md:mt-0">
-          <RemixForm schema={schema}>
-            {({ Field, Errors, register }) => (
-              <>
-                <Field name="name" label="Nome" className="mb-4">
-                  {({ Label, Errors }) => (
-                    <>
-                      <Label className="block text-sm font-medium text-gray-700" />
-                      <Input {...register('name')} />
-                      <Errors className="text-red-600 text-xs" />
-                    </>
-                  )}
-                </Field>
-
-                <Field name="email" label="E-mail" className="mb-4">
-                  {({ Label, Errors }) => (
-                    <>
-                      <Label className="block text-sm font-medium text-gray-700" />
-                      <Input {...register('email')} />
-                      <Errors className="text-red-600 text-xs" />
-                    </>
-                  )}
-                </Field>
-
-                <Field
-                  name="birthday"
-                  label="Data de nascimento"
-                  className="mb-4"
-                >
-                  {({ Label, Errors }) => (
-                    <>
-                      <Label className="block text-sm font-medium text-gray-700" />
-                      <InputDate {...register('birthday')} />
-                      <Errors className="text-red-600 text-xs" />
-                    </>
-                  )}
-                </Field>
-
-                <Field name="password" label="Senha" className="mb-4">
-                  {({ Label, Errors }) => (
-                    <>
-                      <Label className="block text-sm font-medium text-gray-700" />
-                      <Input type="password" {...register('password')} />
-                      <Errors className="text-red-600 text-xs" />
-                    </>
-                  )}
-                </Field>
-                <Errors className="text-red-600 text-xs pb-4" />
-                <div className="flex gap-4">
-                  <Button type="submit">Salvar</Button>
-                  <Button
-                    variant="outline"
-                    type="button"
-                    onClick={() => navigate(-1)}
-                  >
-                    Voltar
-                  </Button>
-                </div>
-              </>
-            )}
-          </RemixForm>
+          <CustomForm
+            schema={schema}
+            buttonText="Salvar"
+            fields={[
+              { label: 'Nome', name: 'name' },
+              { label: 'E-mail', name: 'email', type: 'email' },
+              { label: 'Data de nascimento', name: 'birthday', type: 'date' },
+              { label: 'Senha', name: 'password', type: 'password' },
+            ]}
+          />
         </div>
       </div>
     </div>

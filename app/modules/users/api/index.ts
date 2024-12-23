@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { MIN_PASSWORD_LENGTH } from '~/modules/constants'
 import { db } from '~/modules/db/index.server'
 
 export const userSchema = z.object({
@@ -11,7 +12,7 @@ export const userSchema = z.object({
   birthday: z.date({ message: 'Informe a data de nascimento' }),
   password: z
     .string()
-    .min(5, 'A senha deve conter no mínimo 5 caracteres')
+    .min(MIN_PASSWORD_LENGTH, 'A senha deve conter no mínimo 5 caracteres')
     .trim(),
 })
 

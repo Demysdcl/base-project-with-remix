@@ -1,5 +1,6 @@
 export { Button } from './ui/button'
 export { Calendar } from './ui/calendar'
+export { CustomForm, type CustomFormField } from './ui/CustomForm'
 export { DatePicker } from './ui/datePicker'
 export { ErrorFeedback } from './ui/errorFeedback'
 export { Input } from './ui/input'
