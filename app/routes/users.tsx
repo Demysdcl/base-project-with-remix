@@ -1,9 +1,13 @@
+import { LoaderFunctionArgs } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import { ErrorFeedback } from '~/components'
 import { getUsers, UsersTable } from '~/modules/users'
+import { getLoggedUser } from '~/session.server'
 import { ErrorProps } from '~/types'
 
-export async function loader() {
+export async function loader({ request }: LoaderFunctionArgs) {
+  await getLoggedUser(request)
+
   return { users: await getUsers() }
 }
 

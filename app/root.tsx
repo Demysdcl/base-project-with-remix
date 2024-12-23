@@ -1,11 +1,10 @@
-import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node'
+import type { LinksFunction } from '@remix-run/node'
 import {
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from '@remix-run/react'
 
 import './tailwind.css'
@@ -23,19 +22,7 @@ export const links: LinksFunction = () => [
   },
 ]
 
-export async function loader(args: LoaderFunctionArgs) {
-  return {
-    ENV: {
-      MAX_RETRY: ENV.MAX_RETRY,
-    },
-  }
-}
-
 export function Layout({ children }: { children: React.ReactNode }) {
-  const loaderData = useLoaderData<typeof loader>()
-
-  const { ENV } = loaderData ?? { ENV: '' }
-
   return (
     <html lang="en">
       <head>
@@ -47,11 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <ScrollRestoration />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.ENV = ${JSON.stringify(ENV)}`,
-          }}
-        />
+
         <Scripts />
       </body>
     </html>
