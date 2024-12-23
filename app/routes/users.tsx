@@ -1,13 +1,11 @@
-import { UsersTable } from '~/modules/users'
+import { getUsers, UsersTable } from '~/modules/users'
 
 import { useLoaderData } from '@remix-run/react'
 import { ErrorFeedback } from '~/components'
 import { ErrorProps } from '~/types'
 
 export async function loader() {
-  throw Error('Alguma coisa errada não está certa')
-  // const users = await db.user.findMany()
-  // return { users }
+  return { users: await getUsers() }
 }
 
 export default function () {

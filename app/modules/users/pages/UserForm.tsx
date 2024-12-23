@@ -1,7 +1,7 @@
 import { useNavigate } from '@remix-run/react'
 import { SomeZodObject } from 'zod'
 import { Button, Input, InputDate } from '~/components'
-import { RemixForm } from '~/form'
+import { RemixForm } from '~/modules/remix-forms/index.server'
 
 type UserFormProps = { schema: SomeZodObject }
 
