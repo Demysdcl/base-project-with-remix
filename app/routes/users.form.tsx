@@ -1,9 +1,11 @@
 import { ActionFunctionArgs } from '@remix-run/node'
 import { makeDomainFunction } from 'domain-functions'
 import { z } from 'zod'
+import { ErrorFeedback } from '~/components'
 import { formAction } from '~/form-action.server'
 import { UserForm } from '~/modules/users'
 import { db } from '~/prisma.server'
+import { ErrorProps } from '~/types'
 
 const schema = z.object({
   name: z.string().min(1, 'Informe o nome').trim(),
@@ -33,4 +35,8 @@ export const action = async ({ request }: ActionFunctionArgs) =>
 
 export default function () {
   return <UserForm schema={schema} />
+}
+
+export function ErrorBoundary({ error }: ErrorProps) {
+  return <ErrorFeedback error={error} />
 }

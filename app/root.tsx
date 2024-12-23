@@ -1,4 +1,4 @@
-import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
+import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node'
 import {
   Links,
   Meta,
@@ -6,33 +6,35 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
-} from "@remix-run/react";
+} from '@remix-run/react'
 
-import "./tailwind.css";
+import './tailwind.css'
 
 export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
+    rel: 'preconnect',
+    href: 'https://fonts.gstatic.com',
+    crossOrigin: 'anonymous',
   },
   {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
   },
-];
+]
 
 export async function loader(args: LoaderFunctionArgs) {
   return {
     ENV: {
       MAX_RETRY: ENV.MAX_RETRY,
     },
-  };
+  }
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { ENV } = useLoaderData<typeof loader>();
+  const loaderData = useLoaderData<typeof loader>()
+
+  const { ENV } = loaderData ?? { ENV: '' }
 
   return (
     <html lang="en">
@@ -53,9 +55,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
-  );
+  )
 }
 
 export default function App() {
-  return <Outlet />;
+  return <Outlet />
 }
