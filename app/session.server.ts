@@ -8,7 +8,7 @@ const { getSession, commitSession, destroySession } =
       maxAge: 60,
       path: '/',
       sameSite: 'lax',
-      secrets: ['vT!xWRwhcFwKooP7RV37tUTf_YzjLBc8ryEb'],
+      secrets: [ENV.SESSION_SECRET],
       secure: true,
     },
   })

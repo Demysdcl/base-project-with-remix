@@ -21,7 +21,7 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
-  define: {
-    global: {},
+  server: {
+    open: true,
   },
 })
