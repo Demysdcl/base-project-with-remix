@@ -20,7 +20,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const session = await getSession(request.headers.get('Cookies'))
   session.set('user', result.data)
 
-  return redirect('/', {
+  return redirect('/users', {
     headers: { 'Set-Cookie': await commitSession(session) },
   })
 }

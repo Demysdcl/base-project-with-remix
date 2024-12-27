@@ -1,5 +1,5 @@
 import type { User } from '@prisma/client'
-import { Outlet, useNavigate } from '@remix-run/react'
+import { Link, Outlet } from '@remix-run/react'
 import { format } from 'date-fns'
 import { Button } from '~/components'
 
@@ -8,18 +8,16 @@ interface UsersTableProps {
 }
 
 export function UsersTable({ users }: UsersTableProps) {
-  const navigate = useNavigate()
-
   return (
-    <div className="px-4 py-8 sm:px-6 lg:px-8 ">
+    <div className="px-4 py-8 sm:px-6 lg:px-8 relative">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Usuários</h1>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <Button onClick={() => navigate('/users/form')}>
-            Adicionar usuário
-          </Button>
+          <Link to="/users/form">
+            <Button>Adicionar usuário</Button>
+          </Link>
         </div>
       </div>
       <Outlet />

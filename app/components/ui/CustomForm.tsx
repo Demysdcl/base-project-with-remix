@@ -39,9 +39,7 @@ export const CustomForm = ({
                 <input
                   {...register(field.name)}
                   onFocus={(event) =>
-                    field.type === 'date'
-                      ? event?.target.showPicker()
-                      : undefined
+                    field.type === 'date' && event.target.showPicker()
                   }
                   className="h-8 mt-1 w-full border block  rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
